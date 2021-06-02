@@ -1,3 +1,12 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 80;
+  outline: 1px solid red;
+}
+
 .nav-link {
   display: inline-block;
   text-decoration: none;

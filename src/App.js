@@ -1,32 +1,44 @@
 // TODO delete Layout
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Section from './components/Section';
-import ContactForm from './components/ContactForm';
-import ContactList from './components/ContactList';
-import Filter from './components/Filter';
+import { Switch, Route } from 'react-router-dom';
 import MyLoader from './components/Loader/Loader';
 import { getIsLoading } from './redux/contacts/contacts-selectors';
+import { authOperations } from './redux/auth';
 import Container from './components/Container';
 import AppBar from './components/AppBar';
+import HomeView from './views/HomeView';
+import ContactsView from './views/ContactsView';
+import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginView';
 
-const App = ({ isLoading }) => (
-  <Container>
-    <AppBar />
-    <Section title="Phonebook">
-      <ContactForm />
-    </Section>
+class App extends Component {
+  componentDidMount() {
+    this.props.onGetCurrentUser();
+  }
 
-    <Section title="Contacts">
-      <Filter />
-      <ContactList />
-    </Section>
-    {isLoading && <MyLoader />}
-  </Container>
-);
+  render() {
+    return (
+      <Container>
+        <AppBar />
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route path="/contacts" component={ContactsView} />
+          <Route path="/register" component={RegisterView} />
+          <Route path="/login" component={LoginView} />
+        </Switch>
+        {this.props.isLoading && <MyLoader />}
+      </Container>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   isLoading: getIsLoading(state),
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

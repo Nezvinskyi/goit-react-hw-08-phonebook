@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import './Navigation.scss';
 const Navigation = () => (
   <div>
     <NavLink to="/" exact className="nav-link" activeClassName="nav-link--active">
