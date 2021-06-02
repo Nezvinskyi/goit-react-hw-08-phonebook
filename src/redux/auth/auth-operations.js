@@ -1,7 +1,7 @@
 import axios from 'axios';
+// import * as api from '../../service/contacts-api'
+import '../../service/api-settings';
 import * as actions from './auth-actions';
-
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const token = {
   set(token) {

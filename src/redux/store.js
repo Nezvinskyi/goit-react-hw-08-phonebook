@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -13,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import contactsReducer from './contacts/contacts-reducer';
 import authReducer from './auth/auth-reducer';
+import loaderReducer from './loader/loader-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -28,15 +28,14 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
+    loader: loaderReducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },
   // devTools: process.env.NODE_ENV === 'development',
   middleware,
 });
 
-const persistor = persistStore(store);
-
-export default { store, persistor };
+export const persistor = persistStore(store);

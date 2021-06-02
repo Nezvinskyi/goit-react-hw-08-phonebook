@@ -1,7 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from 'axios';
-
-// axios.defaults.baseURL = 'http://localhost:1234';
+import './api-settings';
 
 export const fetchContacts = async () => {
   const { data } = await axios.get('/contacts');
