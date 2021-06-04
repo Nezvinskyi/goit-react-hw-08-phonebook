@@ -1,10 +1,10 @@
-import './Section.scss'
+import './Section.scss';
 
 const Section = ({ title, children }) => (
-	<div className='Section'>
-		{title && <h2>{title}</h2>}
-		{children}
-	</div>
+  <div className="container">
+    {title && <h2>{title}</h2>}
+    {children}
+  </div>
 );
- 
+
 export default Section;

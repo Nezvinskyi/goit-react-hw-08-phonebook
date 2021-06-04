@@ -4,8 +4,6 @@ import api from '../../service/contacts-api';
 import * as actions from './contacts-actions';
 
 export const addContact = contact => async dispatch => {
-  // const contact = { name, number };
-
   dispatch(actions.addContactRequest());
 
   try {
@@ -36,3 +34,9 @@ export const deleteContact = id => async dispatch => {
     dispatch(actions.deleteContactError(error));
   }
 };
+
+export const changeFilter =
+  ({ target: { value } }) =>
+  dispatch => {
+    dispatch(actions.changeFilter(value));
+  };

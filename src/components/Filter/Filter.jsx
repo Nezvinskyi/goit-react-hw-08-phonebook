@@ -1,31 +1,32 @@
 import { connect } from 'react-redux';
-import { changeFilter } from '../../redux/contacts/contacts-actions';
-import { getFilter } from '../../redux/contacts/contacts-selectors';
-import { FormControl, InputLabel, OutlinedInput } from '@material-ui/core';
+import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 import './Filter.scss';
 
-const Filter = ({ filter, onChange }) => (
-  <FormControl variant="outlined" className="Filter-input">
-    <InputLabel color="secondary" htmlFor="component-outlined-filter">
-      Find contacts by name
-    </InputLabel>
-    <OutlinedInput
-      type="text"
-      id="component-outlined-filter"
-      color="secondary"
+const Filter = ({ contacts, filter, onChange }) => (
+  <>
+    <input
+      className="form-control"
+      list="datalistOptions"
+      id="exampleDataList"
+      placeholder="Type to search..."
       value={filter}
       onChange={onChange}
-      label="Find contacts by name"
     />
-  </FormControl>
+    <datalist id="datalistOptions">
+      {contacts.map(({ id, name }) => (
+        <option key={id} value={name} />
+      ))}
+    </datalist>
+  </>
 );
 
 const mapStateToProps = state => ({
-  filter: getFilter(state),
+  filter: contactsSelectors.getFilter(state),
+  contacts: contactsSelectors.getAllSortedContacts(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  onChange: event => dispatch(changeFilter(event.target.value)),
-});
+const mapDispatchToProps = {
+  onChange: contactsOperations.changeFilter,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

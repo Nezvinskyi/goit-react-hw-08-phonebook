@@ -1,19 +1,19 @@
 import Section from '../components/Section';
 import ContactForm from '../components/ContactForm';
 import ContactList from '../components/ContactList';
-import Filter from '../components/Filter';
+import AddBtn from '../components/AddBtn';
+import ModalWindow from '../components/ModalWindow';
+// import Filter from '../components/Filter';
 
 const ContactsView = () => {
   return (
     <>
-      <Section title="Phonebook">
-        <ContactForm />
-      </Section>
+      <ContactList />
 
-      <Section title="Contacts">
-        <Filter />
-        <ContactList />
-      </Section>
+      <AddBtn />
+      <ModalWindow title="Add new contact">
+        <ContactForm />
+      </ModalWindow>
     </>
   );
 };

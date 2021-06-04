@@ -22,16 +22,33 @@ const LoginView = ({ onLogin }) => {
     <>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          E-mail
-          <input type="email" name="email" value={email} onChange={handleChange} />
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" value={password} onChange={handleChange} />
-        </label>
-
-        <button type="submit">Login</button>
+        <div className="mb-3  form-floating">
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            value={email}
+            id="floatingEmail"
+            placeholder="Email"
+            onChange={handleChange}
+          />
+          <label htmlFor="floatingEmail">E-mail</label>
+        </div>
+        <div className=" mb-3 form-floating">
+          <input
+            className="form-control"
+            type="password"
+            name="password"
+            value={password}
+            id="floatingPassword"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+          <label htmlFor="floatingPassword">Password</label>
+        </div>
+        <button type="submit" className="btn btn-secondary">
+          Login
+        </button>
       </form>
     </>
   );
