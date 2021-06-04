@@ -14,6 +14,17 @@ export const addContact = contact => async dispatch => {
   }
 };
 
+export const editContact = (id, contact) => async dispatch => {
+  dispatch(actions.editContactRequest());
+
+  try {
+    const data = await api.editContact(id, contact);
+    dispatch(actions.editContactSuccess(data));
+  } catch (error) {
+    dispatch(actions.editContactError(error));
+  }
+};
+
 export const fetchContacts = () => async dispatch => {
   dispatch(actions.fetchContactsRequest());
   try {

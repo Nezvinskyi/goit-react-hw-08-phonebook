@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import MyLoader from './components/Loader/Loader';
 import { getIsLoading } from './redux/loader/loader-selector';
 import { authOperations } from './redux/auth';
-import Container from './components/Container';
 import AppBar from './components/AppBar';
 import PrivatRoute from './components/PrivatRoute';
 import PublicRoute from './components/PublicRoute';
@@ -21,7 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <div className="container">
         <AppBar />
         <Suspense fallback={<MyLoader />}>
           <Switch>
@@ -37,7 +36,7 @@ class App extends Component {
           </Switch>
         </Suspense>
         {this.props.isLoading && <MyLoader />}
-      </Container>
+      </div>
     );
   }
 }

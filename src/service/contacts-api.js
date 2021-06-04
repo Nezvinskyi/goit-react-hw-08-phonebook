@@ -12,8 +12,13 @@ export const addContact = async contact => {
   return data;
 };
 
+export const editContact = async (id, contact) => {
+  const { data } = await axios.patch(`/contacts/${id}`, contact);
+  return data;
+};
+
 export const deleteContact = async id => {
   await axios.delete(`/contacts/${id}`);
 };
 
-export default { fetchContacts, addContact, deleteContact };
+export default { fetchContacts, addContact, editContact, deleteContact };

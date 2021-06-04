@@ -1,7 +1,5 @@
 import { Fab, makeStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { connect } from 'react-redux';
-import * as actions from '../../redux/modal/modal-actions';
 
 const useStyles = makeStyles(() => ({
   fab: {
@@ -11,7 +9,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const AddBtn = ({ handleAdd }) => {
+const AddBtn = ({ onClick }) => {
   const classes = useStyles();
   return (
     <>
@@ -22,15 +20,12 @@ const AddBtn = ({ handleAdd }) => {
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
-        onClick={handleAdd}
+        onClick={onClick}
       >
         <AddIcon />
       </Fab>
     </>
   );
 };
-const mapDispatchToProps = dispatch => ({
-  handleAdd: () => dispatch(actions.toggleModal()),
-});
 
-export default connect(null, mapDispatchToProps)(AddBtn);
+export default AddBtn;

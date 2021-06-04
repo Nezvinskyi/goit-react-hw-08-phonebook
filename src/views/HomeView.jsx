@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router';
+import './HomeView.scss';
 
 const HomeView = () => {
   const history = useHistory();
@@ -6,9 +7,11 @@ const HomeView = () => {
     history.push('/contacts');
   };
   return (
-    <div>
-      <h1>HomeView</h1>
-      <button onClick={handleClick}>Phonebook</button>
+    <div className="container home-view">
+      <h1>Welcome</h1>
+      <button className="btn btn-secondary" onClick={handleClick}>
+        Go to Phonebook
+      </button>
     </div>
   );
 };

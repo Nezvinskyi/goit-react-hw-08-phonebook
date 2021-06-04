@@ -9,23 +9,29 @@ const loading = createReducer(false, {
   [authActions.getCurrentUserRequest]: () => true,
 
   [authActions.registerSuccess]: () => false,
-  [authActions.registerError]: () => false,
   [authActions.loginSuccess]: () => false,
-  [authActions.loginError]: () => false,
   [authActions.logoutSuccess]: () => false,
-  [authActions.logoutError]: () => false,
   [authActions.getCurrentUserSuccess]: () => false,
+
+  [authActions.registerError]: () => false,
+  [authActions.loginError]: () => false,
+  [authActions.logoutError]: () => false,
   [authActions.getCurrentUserError]: () => false,
 
   [contactsActions.fetchContactsRequest]: () => true,
   [contactsActions.addContactRequest]: () => true,
   [contactsActions.deleteContactRequest]: () => true,
+  [contactsActions.editContactRequest]: () => true,
+
   [contactsActions.fetchContactsSuccess]: () => false,
-  [contactsActions.fetchContactsError]: () => false,
   [contactsActions.addContactSuccess]: () => false,
-  [contactsActions.addContactError]: () => false,
   [contactsActions.deleteContactSuccess]: () => false,
+  [contactsActions.editContactSuccess]: () => false,
+
+  [contactsActions.fetchContactsError]: () => false,
+  [contactsActions.addContactError]: () => false,
   [contactsActions.deleteContactError]: () => false,
+  [contactsActions.editContactError]: () => false,
 });
 
 export default combineReducers({ loading });

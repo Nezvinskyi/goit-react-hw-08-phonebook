@@ -1,24 +1,24 @@
-import { NavLink } from 'react-router-dom';
-
-import AuthNav from '../AuthNav';
-import './AppBar.scss';
-import UserMenu from '../UserMenu';
 import { connect } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
 import { useRef } from 'react';
+import { NavLink } from 'react-router-dom';
+import { authSelectors } from '../../redux/auth';
+import AuthNav from '../AuthNav';
+import UserMenu from '../UserMenu';
 import Filter from '../Filter';
+import icon from './phonebook-icon.svg';
 
 const AppBar = ({ isAuthenticated }) => {
   const mobileMenu = useRef();
   const handleMenu = () => {
     mobileMenu.current.classList.toggle('collapse');
   };
+
   return (
     <header>
       <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light container-fluid">
         <div className="nav-item">
-          <NavLink to="/" exact className="nav-link" activeClassName="active">
-            Main
+          <NavLink to="/" exact className="nav-link navbar-brand" activeClassName="active">
+            <img src={icon} alt="icon" width="30" height="30" />
           </NavLink>
         </div>
 

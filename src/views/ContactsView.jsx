@@ -1,18 +1,22 @@
-import Section from '../components/Section';
-import ContactForm from '../components/ContactForm';
+import AddNewContactForm from '../components/AddNewContactForm';
 import ContactList from '../components/ContactList';
 import AddBtn from '../components/AddBtn';
 import ModalWindow from '../components/ModalWindow';
-// import Filter from '../components/Filter';
+import { useState } from 'react';
 
 const ContactsView = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(prev => !prev);
+  };
   return (
     <>
       <ContactList />
 
-      <AddBtn />
-      <ModalWindow title="Add new contact">
-        <ContactForm />
+      <AddBtn onClick={toggleModal} />
+      <ModalWindow title="Add new contact" isOpen={showModal} onClose={toggleModal}>
+        <AddNewContactForm toggleModal={toggleModal} />
       </ModalWindow>
     </>
   );
